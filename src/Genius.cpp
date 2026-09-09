@@ -27,3 +27,19 @@ void Genius::testar()
     }
     delay(200);
 }
+
+int Genius::lerBotao()
+{
+    for(int i = 0; i < 4; i++)
+    {
+        if(digitalRead(pinoBotoes[i])==LOW)
+        {
+            delay(50);
+            while(digitalRead(pinoBotoes[i]) == LOW)
+                delay(50);
+
+            return i;
+        }
+    }
+    return -1;
+}

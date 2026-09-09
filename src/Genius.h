@@ -16,6 +16,8 @@ class Genius
         void iniciar();
 
         void testar();
+
+        int lerBotao();
 };
 
 #endif
