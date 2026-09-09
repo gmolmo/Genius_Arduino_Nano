@@ -1,18 +1,17 @@
 #include <Arduino.h>
+#include "Genius.h"
 
-// put function declarations here:
-int myFunction(int, int);
+const int pinoLeds[] = {5,6,10,11};
+const int pinobotoes[] = {2,3,8,12};
+int buzzer = 4;
+
+Genius jogo(pinoLeds,pinobotoes,buzzer);
 
 void setup() {
-  // put your setup code here, to run once:
-  int result = myFunction(2, 3);
+    jogo.iniciar();
+
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-}
-
-// put function definitions here:
-int myFunction(int x, int y) {
-  return x + y;
+  jogo.testar();
 }
