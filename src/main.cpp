@@ -13,12 +13,9 @@ void setup() {
 }
 
 void loop() {
-  int pressionado = -1;
 
-  while (pressionado == -1)
-  {
-    pressionado = jogo.lerBotao();
-  }
-  
-  jogo.testar();
+  int jogoComeca = jogo.standby();
+
+  if(jogoComeca == 1)
+    jogo.testar();
 }

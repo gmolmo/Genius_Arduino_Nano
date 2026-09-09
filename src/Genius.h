@@ -18,6 +18,8 @@ class Genius
         void testar();
 
         int lerBotao();
+
+        int standby();
 };
 
 #endif

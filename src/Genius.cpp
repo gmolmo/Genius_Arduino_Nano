@@ -43,3 +43,43 @@ int Genius::lerBotao()
     }
     return -1;
 }
+
+int Genius::standby()
+{
+    for(int i = 0; i < 4; i++)//inicializa leds apagados
+        digitalWrite(pinoLeds[i], LOW);
+
+    while (true)//inicia o loop que faz:
+    {
+        for(int i = 0; i < 4; i++)
+            digitalWrite(pinoLeds[i], HIGH);//acende os leds
+
+        for(int m = 0; m < 5000; m++)//verifica se tem botao clicado
+        {
+            int botao = lerBotao();
+            if(botao != -1)
+            {
+                for(int i = 0; i < 4; i++)
+                digitalWrite(pinoLeds[i], LOW);//se tiver, desliga tudo e retorna
+
+                return 1;
+            }
+        }
+        delay(10);
+        for(int i = 0; i < 4; i++)
+            digitalWrite(pinoLeds[i], LOW);// se nao apaga e verifica de novo
+        delay(10);
+
+        for(int m = 0; m < 5000; m++)
+        {
+            int botao = lerBotao();
+            if(botao != -1)
+            {
+                for(int i = 0; i < 4; i++)
+                digitalWrite(pinoLeds[i], LOW);
+
+                return 1;
+            }
+        }
+    }
+}
