@@ -18,5 +18,5 @@ void loop() {
   jogo.avisoInicio();
 
   if(jogoComeca == 1)
-    jogo.testar();
+    jogo.gameOver();
 }
