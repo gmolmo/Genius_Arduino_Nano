@@ -13,10 +13,18 @@ void setup() {
 
 void loop() {
 
-  int jogoComeca = jogo.standby();
+  int nRodadas = 5;
+
+  jogo.standby();
 
   jogo.avisoInicio();
+  int resultado = jogo.loopJogo(nRodadas);
 
-  if(jogoComeca == 1)
+  if(resultado == 1)
+    jogo.win();
+  else
     jogo.gameOver();
+
+  delay(1000);
+
 }
