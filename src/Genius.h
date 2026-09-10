@@ -37,13 +37,14 @@ class Genius
         //loop principal do jogo
         int loopJogo(int rodadas);
 
-        //aviso sonoro e luminoso de fim de jogo, em caso de perder
+        //aviso sonoro e luminoso de fim de jogo, em caso de derrota
         void gameOver();
 
         //funcao que aguarda o inicio do jogo, encerrando com o pressionar de qualquer botao
         int standby();
 
-
+        //aviso sonoro e luminoso de fim de jogo, em caso de vitoria
+        void win();
 };
 
 #endif

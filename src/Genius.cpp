@@ -90,7 +90,40 @@ bool Genius::recebeJogada(int rodada, int sequencia[])
 
 int Genius::loopJogo(int rodadas)
 {
-       
+    int frequencias[] = {262,294,330,349};
+    int rodadas_jogadas = 0;
+    int sequenciaCorreta[rodadas];
+    int duracao = 300;
+    randomSeed(analogRead(A0));//aleatorizando a sequencia com estrategia do gemini
+
+    for(int i = 0; i < rodadas; i++)
+        sequenciaCorreta[i] = random(0,4);//preenche o vetor com numeros entre 0 e 3
+
+    bool vitoria = true;
+
+    delay(500);
+    while (true)//loop principal do jogo;  
+    {
+        for(int i = 0; i < rodadas_jogadas; i++)
+        {
+            ledBuzzer(sequenciaCorreta[i],duracao,frequencias);
+            delay(300);
+        }
+        bool correto = recebeJogada(rodadas_jogadas,sequenciaCorreta);
+
+        if(!correto)
+        {
+            return 0;
+        }
+
+        rodadas_jogadas++;
+
+        if(rodadas_jogadas == rodadas)
+            return 1;
+
+        delay(500);
+    }
+    
 }
 
 void Genius::gameOver()
@@ -157,4 +190,9 @@ int Genius::standby()
             }
         }
     }
+}
+
+void Genius::win()
+{
+
 }
