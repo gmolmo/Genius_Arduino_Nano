@@ -13,13 +13,17 @@ class Genius
     public:
         Genius(const int pinoLeds[], const int pinoBotoes[], int pinoBuzzer);
 
+        int lerBotao();
+
         void iniciar();
+
+        void avisoInicio();
 
         void testar();
 
-        int lerBotao();
-
         int standby();
+
+
 };
 
 #endif

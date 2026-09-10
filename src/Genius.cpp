@@ -15,6 +15,36 @@ void Genius::iniciar()
         pinMode(pinoBotoes[i],INPUT_PULLUP);
     }
     pinMode(pinoBuzzer,OUTPUT);
+    noTone(pinoBuzzer);
+}
+
+void Genius::avisoInicio()
+{
+    int tomContagem = 349;
+    int tomInicio = 698;
+
+    for (int i = 0; i < 3; i++)
+    {
+        digitalWrite(pinoLeds[i], HIGH);
+        tone(pinoBuzzer, tomContagem, 150);
+        delay(150);
+        digitalWrite(pinoLeds[i], LOW);
+        delay(350);
+    }
+
+    for (int i = 0; i < 4; i++) 
+    {
+        digitalWrite(pinoLeds[i], HIGH);
+    }
+    tone(pinoBuzzer, tomInicio, 400);
+    delay(400);
+
+    for (int i = 0; i < 4; i++)
+    {
+        digitalWrite(pinoLeds[i], LOW);
+    }
+    delay(300);
+
 }
 
 void Genius::testar()
