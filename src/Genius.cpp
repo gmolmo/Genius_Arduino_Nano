@@ -49,7 +49,7 @@ void Genius::avisoInicio()
 
 void Genius::ledBuzzer(int led,int duracao,int frequencias[])//duracao pra dificuldades maiores
 {
-    digitalWrite(led,HIGH);
+    digitalWrite(pinoLeds[led],HIGH);
     tone(pinoBuzzer,frequencias[led],duracao);
     delay(duracao);//aciona o determinado led e buzzer no intervalo de tempo recebido, na frequencia de cada "led"
     digitalWrite(pinoLeds[led],LOW);
@@ -99,8 +99,6 @@ int Genius::loopJogo(int rodadas)
     for(int i = 0; i < rodadas; i++)
         sequenciaCorreta[i] = random(0,4);//preenche o vetor com numeros entre 0 e 3
 
-    bool vitoria = true;
-
     delay(500);
     while (true)//loop principal do jogo;  
     {
@@ -121,7 +119,7 @@ int Genius::loopJogo(int rodadas)
         if(rodadas_jogadas == rodadas)
             return 1;
 
-        delay(500);
+        delay(700);
     }
     
 }

@@ -13,7 +13,7 @@ void setup() {
 
 void loop() {
 
-  int nRodadas = 5;
+  int nRodadas = 10;
 
   jogo.standby();
 
