@@ -2,7 +2,7 @@
 #include "Genius.h"
 
 const int pinoLeds[] = {5,6,10,11};
-const int pinobotoes[] = {2,3,8,12};
+const int pinobotoes[] = {2,3,8,12,A5};
 int buzzer = 7;
 
 Genius jogo(pinoLeds,pinobotoes,buzzer);
