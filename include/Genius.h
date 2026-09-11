@@ -9,10 +9,11 @@ class Genius
         const int* pinoLeds;//vetor de leds
         const int* pinoBotoes;//vetor de botoes
         int pinoBuzzer;
+        const int *ledsdificuldade;
 
     public:
         //construtor que recebe um vetor de leds, um vetor de botoes e o pino do buzzer    
-        Genius(const int pinoLeds[], const int pinoBotoes[], int pinoBuzzer);
+        Genius(const int pinoLeds[], const int pinoBotoes[], int pinoBuzzer,const int ledsdificuldade[]);
 
         //funcao que aguarda o pressionamento de um botao
         //retorna -1 caso nao seja apertado nenhum botao
@@ -41,10 +42,13 @@ class Genius
         void gameOver();
 
         //funcao que aguarda o inicio do jogo, encerrando com o pressionar de qualquer botao
-        int standby();
+        int standby(const int ledsDificuldade[]);
 
         //aviso sonoro e luminoso de fim de jogo, em caso de vitoria
         void win();
+
+        //funcao que acende leds que indicam a dificuldade do jogo
+        void LedsDificuldade(int dificuldade, int ledsDificuldade[]);
 };
 
 #endif

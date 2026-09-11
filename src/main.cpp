@@ -3,9 +3,10 @@
 
 const int pinoLeds[] = {5,6,10,11};
 const int pinobotoes[] = {2,3,8,12,A5};
+const int ledsdificuldade[] = {13, 9, 4};
 int buzzer = 7;
 
-Genius jogo(pinoLeds,pinobotoes,buzzer);
+Genius jogo(pinoLeds,pinobotoes,buzzer,ledsdificuldade);
 
 void setup() {
     jogo.iniciar();
@@ -17,7 +18,7 @@ void loop() {
 
   int dificuldade = 0;
 
-  dificuldade = jogo.standby();
+  dificuldade = jogo.standby(ledsdificuldade);
 
   switch (dificuldade)
   {
