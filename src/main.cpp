@@ -18,7 +18,7 @@ void loop() {
 
   int dificuldade = 0;
 
-  dificuldade = jogo.standby(ledsdificuldade);
+  dificuldade = jogo.standby();
 
   switch (dificuldade)
   {

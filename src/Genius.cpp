@@ -1,10 +1,11 @@
 #include "Genius.h"
 
-Genius::Genius(const int leds[],const int botoes[],int buzzer)
+Genius::Genius(const int leds[],const int botoes[],int buzzer,const int ledsdificuldade[])
 {
     this->pinoLeds = leds;
     this->pinoBotoes = botoes;
     this->pinoBuzzer = buzzer;
+    this->ledsdificuldade = ledsdificuldade;
 }
 
 void Genius::iniciar()
@@ -12,8 +13,18 @@ void Genius::iniciar()
     for(int i = 0; i < 4; i++)
     {
         pinMode(pinoLeds[i],OUTPUT);
-        pinMode(pinoBotoes[i],INPUT_PULLUP);
+        digitalWrite(pinoLeds[i],LOW);
     }
+    for(int i = 0; i < 3; i++)
+    {
+        pinMode(ledsdificuldade[i],OUTPUT);
+        digitalWrite(ledsdificuldade[i],LOW);
+    }
+
+    for(int i = 0; i < 5; i++)
+        pinMode(pinoBotoes[i],INPUT_PULLUP);
+
+    digitalWrite(ledsdificuldade[0],HIGH);
     pinMode(pinoBuzzer,OUTPUT);
     noTone(pinoBuzzer);//certeza de buzzer desligado ao iniciar
 }
@@ -94,7 +105,8 @@ int Genius::loopJogo(int rodadas)
     int rodadas_jogadas = 0;
     int sequenciaCorreta[rodadas];
     int duracao = 300;
-    randomSeed(analogRead(A0));//aleatorizando a sequencia com estrategia do gemini
+
+    randomSeed(analogRead(A0) * analogRead(A1)%analogRead(A2)/analogRead(A3)+analogRead(A4));//aleatorizando a sequencia com estrategia do gemini
 
     for(int i = 0; i < rodadas; i++)
         sequenciaCorreta[i] = random(0,4);//preenche o vetor com numeros entre 0 e 3
@@ -104,6 +116,11 @@ int Genius::loopJogo(int rodadas)
     {
         for(int i = 0; i <= rodadas_jogadas; i++)
         {
+
+            if(rodadas_jogadas/rodadas >= 0,7)//acelera o jogo conforme seu avanço
+                duracao = 250;
+            if(rodadas_jogadas/rodadas>=0,9)
+                duracao = 200;
             ledBuzzer(sequenciaCorreta[i],duracao,frequencias);
             delay(300);
         }
@@ -146,7 +163,7 @@ void Genius::gameOver()
 
 int Genius::lerBotao()
 {
-    for(int i = 0; i < 4; i++)
+    for(int i = 0; i < 5; i++)
     {
         if(digitalRead(pinoBotoes[i])==LOW)
         {
@@ -162,8 +179,9 @@ int Genius::lerBotao()
 
 int Genius::standby()
 {
-    for(int i = 0; i < 4; i++)//inicializa leds apagados
-        digitalWrite(pinoLeds[i], LOW);
+    int dificuldade = 0;
+
+    LedsDificuldade(dificuldade);
 
     while (true)//inicia o loop que faz:
     {
@@ -173,12 +191,20 @@ int Genius::standby()
         for(int m = 0; m < 5000; m++)//verifica se tem botao clicado
         {
             int botao = lerBotao();
-            if(botao != -1)
+            if(botao == 4)
+            {
+                dificuldade++;
+                if(dificuldade > 2)
+                    dificuldade = 0;
+                LedsDificuldade(dificuldade);
+            }
+
+            else if(botao != -1)
             {
                 for(int i = 0; i < 4; i++)
                 digitalWrite(pinoLeds[i], LOW);//se tiver, desliga tudo e retorna
 
-                return 1;
+                return dificuldade;
             }
         }
         delay(10);
@@ -189,12 +215,19 @@ int Genius::standby()
         for(int m = 0; m < 5000; m++)
         {
             int botao = lerBotao();
-            if(botao != -1)
+            if(botao == 4)
+            {
+                dificuldade++;
+                if(dificuldade > 2)
+                    dificuldade = 0;
+                LedsDificuldade(dificuldade);
+            }
+            else if(botao != -1)
             {
                 for(int i = 0; i < 4; i++)
                 digitalWrite(pinoLeds[i], LOW);
 
-                return 1;
+                return dificuldade;
             }
         }
     }
@@ -218,5 +251,30 @@ int notasVitoria[] = {523, 659, 784, 1046};
         }
 
         delay(60);
+    }
+}
+
+void Genius::LedsDificuldade(int dificuldade)
+{
+    switch (dificuldade)
+    {
+    case 0:
+        digitalWrite(ledsdificuldade[0],HIGH);
+        digitalWrite(ledsdificuldade[1],LOW);
+        digitalWrite(ledsdificuldade[2],LOW);
+        break;
+    case 1:
+        digitalWrite(ledsdificuldade[0],HIGH);
+        digitalWrite(ledsdificuldade[1],HIGH);
+        digitalWrite(ledsdificuldade[2],LOW);
+        break;
+    case 2:
+        digitalWrite(ledsdificuldade[0],HIGH);
+        digitalWrite(ledsdificuldade[1],HIGH);
+        digitalWrite(ledsdificuldade[2],HIGH);
+        break;
+    
+    default:
+        break;
     }
 }

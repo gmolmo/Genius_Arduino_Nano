@@ -42,13 +42,13 @@ class Genius
         void gameOver();
 
         //funcao que aguarda o inicio do jogo, encerrando com o pressionar de qualquer botao
-        int standby(const int ledsDificuldade[]);
+        int standby();
 
         //aviso sonoro e luminoso de fim de jogo, em caso de vitoria
         void win();
 
         //funcao que acende leds que indicam a dificuldade do jogo
-        void LedsDificuldade(int dificuldade, int ledsDificuldade[]);
+        void LedsDificuldade(int dificuldade);
 };
 
 #endif
