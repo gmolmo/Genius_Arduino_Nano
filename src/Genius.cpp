@@ -84,7 +84,7 @@ bool Genius::recebeJogada(int rodada, int sequencia[])
     {
         int pressionado = -1;
 
-        while (pressionado == -1)//aguarda o pressionar de um botao
+        while (pressionado == -1 || pressionado == 4)//aguarda o pressionar de um botao
         {
             pressionado = lerBotao();
         }
@@ -106,8 +106,6 @@ int Genius::loopJogo(int rodadas)
     int sequenciaCorreta[rodadas];
     int duracao = 300;
 
-    randomSeed(analogRead(A0) * analogRead(A1)%analogRead(A2)/analogRead(A3)+analogRead(A4));//aleatorizando a sequencia com estrategia do gemini
-
     for(int i = 0; i < rodadas; i++)
         sequenciaCorreta[i] = random(0,4);//preenche o vetor com numeros entre 0 e 3
 
@@ -117,9 +115,9 @@ int Genius::loopJogo(int rodadas)
         for(int i = 0; i <= rodadas_jogadas; i++)
         {
 
-            if(rodadas_jogadas/rodadas >= 0,7)//acelera o jogo conforme seu avanço
+            if((rodadas_jogadas * 10) / rodadas >= 7)//acelera o jogo conforme seu avanço
                 duracao = 250;
-            if(rodadas_jogadas/rodadas>=0,9)
+            if((rodadas_jogadas *10)/ rodadas >= 9)
                 duracao = 200;
             ledBuzzer(sequenciaCorreta[i],duracao,frequencias);
             delay(300);
@@ -201,6 +199,7 @@ int Genius::standby()
 
             else if(botao != -1)
             {
+                randomSeed(micros() ^ analogRead(A0));
                 for(int i = 0; i < 4; i++)
                 digitalWrite(pinoLeds[i], LOW);//se tiver, desliga tudo e retorna
 
@@ -224,6 +223,7 @@ int Genius::standby()
             }
             else if(botao != -1)
             {
+                randomSeed(micros() ^ analogRead(A0));
                 for(int i = 0; i < 4; i++)
                 digitalWrite(pinoLeds[i], LOW);
 
