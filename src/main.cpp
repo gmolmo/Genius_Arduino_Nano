@@ -13,9 +13,27 @@ void setup() {
 
 void loop() {
 
-  int nRodadas = 10;
+  int nRodadas = 5;
 
-  jogo.standby();
+  int dificuldade = 0;
+
+  dificuldade = jogo.standby();
+
+  switch (dificuldade)
+  {
+  case 0:
+    nRodadas = 5;
+    break;
+  case 1:
+    nRodadas = 10;
+    break;
+  case 2:
+    nRodadas = 15;
+    break;
+  default:
+    nRodadas = 5;
+    break;
+  }
 
   jogo.avisoInicio();
   int resultado = jogo.loopJogo(nRodadas);
