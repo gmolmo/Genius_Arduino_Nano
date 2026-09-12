@@ -208,7 +208,7 @@ int Genius::standby()
         }
         delay(10);
         for(int i = 0; i < 4; i++)
-            digitalWrite(pinoLeds[i], LOW);// se nao apaga e verifica de novo
+            digitalWrite(pinoLeds[i], LOW);// se nao apaga e verifica de novo 
         delay(10);
 
         for(int m = 0; m < 5000; m++)
