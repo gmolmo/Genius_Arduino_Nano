@@ -1,10 +1,10 @@
 #include <Arduino.h>
 #include "Genius.h"
 
-const int pinoLeds[] = {6,5,4,3};
-const int pinobotoes[] = {A5,A4,A3,A2,A1};
-const int ledsdificuldade[] = {11,10,9};
-int buzzer = 12;
+const int pinoLeds[] = {3,4,5,6};
+const int pinobotoes[] = {A4,A3,A2,A1,A0};
+const int ledsdificuldade[] = {10,11,12};
+int buzzer = 13;
 
 int dificuldade;
 
@@ -12,12 +12,13 @@ Genius jogo(pinoLeds,pinobotoes,buzzer,ledsdificuldade);
 
 void setup() {
     jogo.iniciar();
-    int dificuldade = 0;
 }
 
 void loop() {
 
   int nRodadas = 5;
+
+  int dificuldade = 0;
 
   dificuldade = jogo.standby();
 
