@@ -32,7 +32,7 @@ O programa conta com **3 níveis de dificuldade** selecionáveis pelo botão de 
 - **Placa Perfurada**: Circuito soldado para garantir durabilidade e conexões firmes.
 - **Case 3D**: Case plástico impresso em 3D para abrigar a eletrônica.
 
-## 🏗️ Ferramentas
+## 🪚 Ferramentas
 
 ### C++ / Arduino Framework <img loading="lazy" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" width="25" height="25"/>
 Linguagem utilizada no desenvolvimento de toda a lógica do projeto, aplicando orientação a objetos básica e boa organização estrutural.
