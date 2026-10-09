@@ -1,8 +1,8 @@
-<h1 align="center"> 🎮🔵🟢 Genius / Simon - Arduino 🟡🔴🎮 </h1>
+<h1 align="center"> 🔵🟢 Genius / Simon - Arduino 🟡🔴 </h1>
 
 <div align="center">
 
-<img loading="lazy" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" width="40" height="40"/> <img loading="lazy" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/arduino/arduino-original.svg" width="40" height="40"/> <img loading="lazy" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" width="40" height="40"/> <img loading="lazy" src="https://cdn.simpleicons.org/platformio/F58220" width="40" height="40"/>
+<img loading="lazy" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" width="40" height="40"/> <img loading="lazy" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/arduino/arduino-original.svg" width="40" height="40"/> <img loading="lazy" src="https://cdn.simpleicons.org/platformio/F58220" width="40" height="40"/>
 
 </div>
 
